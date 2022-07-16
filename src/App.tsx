@@ -1,4 +1,5 @@
 import { QueryClient, QueryClientProvider } from "react-query";
+import { Route, Routes } from "react-router-dom";
 import Navigator from "./components/Navigator";
 import Home from "./pages/Home";
 import "./styles/reset.css"
@@ -9,7 +10,9 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <Navigator />
-      <Home />
+      <Routes>
+        <Route path="/" element={<Home />} />
+      </Routes>
     </QueryClientProvider>
   )
 }
