@@ -9,6 +9,12 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@vanilla-extract/css": "^1.7.2",
+    "@vanilla-extract/css-utils": "^0.1.2",
+    "@vanilla-extract/dynamic": "^2.0.2",
+    "@vanilla-extract/vite-plugin": "^3.2.1",
+    "axios": "^0.27.2",
+    "camelcase-keys": "^8.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-query": "4.0.0-beta.23"
