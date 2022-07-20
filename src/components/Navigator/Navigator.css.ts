@@ -9,7 +9,14 @@ export const navigator = style({
   color: "white",
   width: "80%",
   height: navigatorHeight,
-  margin: "0 auto"
+  position: "fixed",
+  left: "50%",
+  transform: "translate(-50%)"
+})
+
+export const navigatorWhite = style({
+  backgroundColor: "white",
+  color: "black"
 })
 
 export const naviagorMenu = style({

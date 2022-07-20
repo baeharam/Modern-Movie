@@ -16,3 +16,8 @@ globalStyle("li", {
 globalStyle("h2", {
   margin: 0
 })
+
+globalStyle("a", {
+  textDecoration: "none",
+  color: "inherit"
+})

@@ -15,3 +15,8 @@ export const axiosInstance = axios.create({
 axiosInstance.interceptors.response.use((response) => {
   return camelcaseKeys(response, { deep: true });
 })
+
+export const QueryKeys = Object.freeze({
+  MOVIE_TREND: "MOVIE_TREND",
+  MOVIE_DETAIL: "MOVIE_DETAIL"
+})

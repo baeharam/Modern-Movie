@@ -1,5 +1,8 @@
 import { useTrendMovie } from "./queries"
 import * as style from "./Home.css";
+import Navigator from "../../components/Navigator";
+import { Link } from "react-router-dom";
+import { makeOriginalMovieImageUrl } from "../../utils";
 
 const Home = () => {
   const { data, isLoading } = useTrendMovie();
@@ -11,15 +14,17 @@ const Home = () => {
 
   return (
     <>
+      <Navigator />
       <main className={style.container}>
         <div className={style.movieInfo}>
           <h2>Today's movie</h2>
           <p>{data.tagline}</p>
           <p>{data.title}</p>
+          <Link to={`/detail/${data.id}`} className={style.moreButton}>MORE</Link>
         </div>
       </main>
       <div style={{
-        backgroundImage: `url("https://image.tmdb.org/t/p/original${data.backdropPath}")`,
+        backgroundImage: `url(${makeOriginalMovieImageUrl(data.backdropPath)})`,
       }} className={style.backgroundImage} />
     </>
 

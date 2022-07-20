@@ -38,3 +38,19 @@ export const backgroundImage = style({
     }
   }
 })
+
+export const moreButton = style({
+  backgroundColor: "white",
+  fontSize: "20px",
+  border: "2px solid black",
+  color: "black",
+  padding: "10px 20px",
+  cursor: "pointer",
+
+  selectors: {
+    "&:hover": {
+      backgroundColor: "black",
+      color: "white",
+    }
+  }
+})

@@ -1,5 +1,6 @@
+import { useMemo } from "react";
 import { useQuery, UseQueryResult } from "react-query";
-import { axiosInstance } from "../../constants"
+import { axiosInstance, QueryKeys } from "../../constants"
 
 interface TrendingMovieWeekResult {
   adult: boolean;
@@ -35,15 +36,15 @@ interface MovieDetail {
 }
 
 const getTrendMovie = () => axiosInstance.get<TrendingMovieWeek>("/trending/movie/week").then(({ data }) => data);
-const makeMovieDetailGetter = (id: number) => () => axiosInstance.get<MovieDetail>(`/movie/${id}`).then(({ data }) => data);
+export const makeMovieDetailGetter = (id: number) => () => axiosInstance.get<MovieDetail>(`/movie/${id}`).then(({ data }) => data);
 
 export const useTrendMovie = () => {
-  const { data } = useQuery(['trendMovie'], getTrendMovie);
+  const { data } = useQuery([QueryKeys.MOVIE_TREND], getTrendMovie);
 
-  const randomIndex = Math.floor(Math.random() * (data?.results?.length ?? 0));
+  const randomIndex = useMemo(() => Math.floor(Math.random() * (data?.results?.length ?? 0)), [data]);
   const randomMovie = data?.results[randomIndex];
 
-  const queryResult = useQuery(['movieDetail'], makeMovieDetailGetter(randomMovie?.id ?? 0), {
+  const queryResult = useQuery([QueryKeys.MOVIE_DETAIL, randomMovie?.id], makeMovieDetailGetter(randomMovie?.id ?? 0), {
     enabled: !!randomMovie?.id,
   })
 
